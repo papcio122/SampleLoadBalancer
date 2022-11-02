@@ -6,9 +6,11 @@ use LoadBalancer\HostInterface;
 
 class ThresholdStrategy implements StrategyInterface
 {
+    private float $threshold = 0.75;
 
     public function __construct(private array $hosts)
-    {}
+    {
+    }
 
     public function getNextHost(): HostInterface
     {
@@ -20,7 +22,7 @@ class ThresholdStrategy implements StrategyInterface
          */
         foreach ($this->hosts as $key => $host) {
             $load = $host->getLoad();
-            if ($load < 0.75) {
+            if ($load < $this->threshold) {
                 return $host;
             }
             if ($load < $lowestLoad) {

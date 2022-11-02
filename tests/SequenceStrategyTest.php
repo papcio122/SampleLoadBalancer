@@ -25,8 +25,8 @@ class SequenceStrategyTest extends TestCase
         $stub3 = $this->createStub(HostInterface::class);
 
         $strategy = new SequenceStrategy([$stub1, $stub2, $stub3]);
-        $host = $strategy->getNextHost();
-        $host = $strategy->getNextHost();
+        $strategy->getNextHost();
+        $strategy->getNextHost();
         $host = $strategy->getNextHost();
 
         $this->assertSame($host, $stub3);
@@ -39,9 +39,9 @@ class SequenceStrategyTest extends TestCase
         $stub3 = $this->createStub(HostInterface::class);
 
         $strategy = new SequenceStrategy([$stub1, $stub2, $stub3]);
-        $host = $strategy->getNextHost();
-        $host = $strategy->getNextHost();
-        $host = $strategy->getNextHost();
+        $strategy->getNextHost();
+        $strategy->getNextHost();
+        $strategy->getNextHost();
         $host = $strategy->getNextHost();
 
         $this->assertSame($host, $stub1);
